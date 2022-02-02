@@ -28,11 +28,9 @@ function mine() {
   const coinbaseTX = new Transaction([], [coinbaseUTXO]);
   block.addTransaction(coinbaseTX);
 
-  console.log(block.nonce);
   while (BigInt("0x" + block.hash()) >= db.blockchain.TARGET_DIFFICULTY) {
     block.nonce++;
   }
-  console.log(block.nonce);
 
   block.execute();
 

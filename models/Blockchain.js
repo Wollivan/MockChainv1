@@ -28,15 +28,17 @@ class Blockchain {
     this.blocks.push(block);
 
     //add to json
-    console.log("Before file sync", this.TARGET_DIFFICULTY);
     // write JSON string to a file
-    fs.writeFileSync("blockchain.json", JSON.stringify(this.blocks), (err) => {
-      if (err) {
-        throw err;
+    fs.writeFileSync(
+      "blockchain.json",
+      JSON.stringify(this.blocks, null, 2),
+      (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("JSON data is saved.");
       }
-      console.log("JSON data is saved.");
-    });
-    console.log("After file sync", this.TARGET_DIFFICULTY);
+    );
   }
 
   //how many blocks inside the blockchain
